@@ -54,7 +54,7 @@ class CircularLinkedList:
         return True, self.cur.data
     
     def LRemove(self):
-        rpos = Node()
+        rpos = self.cur
         rdata = rpos.data
 
         if rpos == self.tail:
