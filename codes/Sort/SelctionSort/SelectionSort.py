@@ -1,10 +1,10 @@
 def SelectionSort(arr):
     n = len(arr)
 
-    for i in range(n-1):
+    for i in range(n-1):            # 몇 개가 정렬되었는지
         minIdx = i
 
-        for j in range(i+1, n):
+        for j in range(i+1, n):     # 최솟값 찾기
             if arr[j] < arr[minIdx]:
                 minIdx = j
         
