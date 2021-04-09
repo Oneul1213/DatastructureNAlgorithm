@@ -31,7 +31,7 @@ int Partition(int arr[], int left, int right)
 
 void QuickSort(int arr[], int left, int right)
 {
-	if (left <= right)
+	if (left < right)
 	{
 		int pivot = Partition(arr, left, right);
 		QuickSort(arr, left, pivot - 1);

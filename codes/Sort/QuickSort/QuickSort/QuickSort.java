@@ -28,7 +28,7 @@ public class QuickSort {
     }
 
     public static void Sort(int[] arr, int left, int right) {
-        if (left <= right) {
+        if (left < right) {
             int pivot = QuickSort.Partition(arr, left, right);
 
             QuickSort.Sort(arr, left, pivot - 1);

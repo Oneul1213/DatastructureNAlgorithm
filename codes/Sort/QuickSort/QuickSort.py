@@ -22,7 +22,7 @@ def Partition(arr, left, right):
     return high
 
 def QuickSort(arr, left, right):
-    if left <= right:
+    if left < right:
         pivot = Partition(arr, left, right)
 
         QuickSort(arr, left, pivot - 1)
