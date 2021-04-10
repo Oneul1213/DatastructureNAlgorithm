@@ -9,16 +9,16 @@ def Partition(arr, left, right):
     high = right
 
     while low <= high:
-        while low <= right and pivot >= arr[low]:
+        while low <= right and pivot >= arr[low]:           # low가 pivot보다 큰 값을 가리키도록
             low += 1
 
-        while high >= left + 1 and pivot <= arr[high]:
+        while high >= left + 1 and pivot <= arr[high]:      # high가 pivot보다 작은 값을 가리키도록
             high -= 1
         
         if low <= high:
             Swap(arr, low, high)
     
-    Swap(arr, left, high)
+    Swap(arr, left, high)                                   # pivot을 정렬된 위치에 배치
     return high
 
 def QuickSort(arr, left, right):
