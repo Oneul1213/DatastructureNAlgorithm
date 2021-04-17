@@ -145,7 +145,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return dNode;
     }
 
-    void BSTShowAll() {
+    public void BSTShowAll() {
         this.root.InorderTraverse(this::ShowData);
     }
 }
