@@ -17,11 +17,16 @@ void TBLInsert(Table* pt, Key k, Value v)
 {
 	int hv = pt->hf1(k);
 
+	// 키가 중복되었다면
+	if (TBLSearch(pt, k) != NULL)
+	{
+		printf("키 중복 오류 발생 \n");
+		return;
+	}
+
 	// 충돌 발생 시 빈 자리를 찾을 때 까지 반복
 	while (pt->tbl[hv].status == INUSE || pt->tbl[hv].status == DELETED)
-	{
 		hv = hv + pt->hf2(k);
-	}
 
 	pt->tbl[hv].val = v;
 	pt->tbl[hv].key = k;
@@ -32,6 +37,7 @@ Value TBLDelete(Table* pt, Key k)
 {
 	int hv = pt->hf1(k);
 
+	// 충돌 발생 시 빈 자리를 찾을 때 까지 반복
 	while (pt->tbl[hv].status == DELETED)
 		hv = hv + pt->hf2(k);
 
@@ -48,6 +54,7 @@ Value TBLSearch(Table* pt, Key k)
 {
 	int hv = pt->hf1(k);
 
+	// 충돌 발생 시 빈 자리를 찾을 때 까지 반복
 	while (pt->tbl[hv].status == DELETED)
 		hv = hv + pt->hf2(k);
 
