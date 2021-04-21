@@ -13,7 +13,7 @@ class SinglyLinkedList:
         
         self.comp = None
     
-    def Finsert(self, data):
+    def FInsert(self, data):
         newNode = Node()
         newNode.data = data
 
