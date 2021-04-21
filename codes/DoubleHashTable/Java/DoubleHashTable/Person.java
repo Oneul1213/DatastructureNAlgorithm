@@ -25,5 +25,6 @@ public class Person {
         System.out.println("주민등록번호: "+this.ssn);
         System.out.println("이름: "+this.name);
         System.out.println("주소: "+this.address);
+        System.out.println();
     }
 }
