@@ -1,6 +1,6 @@
 #pragma once
 #include <functional>
-#include "SlotCpp.h";
+#include "SlotCpp.h"
 #include "SlotCpp.cpp"
 
 template <typename K, typename T> class Table
