@@ -5,14 +5,14 @@ import java.util.function.Function;
 public class ChainingTable<K, T> {
     final static int MAX_TBL = 100;
 
-    private SinlgyLinkedList<ChainingSlot<K, T>>[] tbl;
+    private SinglyLinkedList<ChainingSlot<K, T>>[] tbl;
     private Function<K, Integer> hashFunc;
 
     public ChainingTable(Function<K, Integer> hf) {
-        this.tbl = new SinlgyLinkedList[MAX_TBL];
+        this.tbl = new SinglyLinkedList[MAX_TBL];
 
         for (int i = 0; i < MAX_TBL; i++)
-            this.tbl[i] = new SinlgyLinkedList<ChainingSlot<K, T>>();
+            this.tbl[i] = new SinglyLinkedList<ChainingSlot<K, T>>();
 
         this.hashFunc = hf;
     }

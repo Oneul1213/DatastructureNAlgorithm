@@ -2,7 +2,7 @@ package SinglyLinkedList;
 
 public class SinglyLinkedListMain {
     public static void main(String[] args) {
-        SinglyLinkedListInterface<Integer> list = new SinlgyLinkedList<Integer>();
+        SinglyLinkedListInterface<Integer> list = new SinglyLinkedList<Integer>();
         Integer[] data = new Integer[1];
 
         list.SetSortRule((Integer d1, Integer d2) -> {

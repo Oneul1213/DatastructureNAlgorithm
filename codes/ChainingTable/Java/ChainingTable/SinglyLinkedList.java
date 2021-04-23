@@ -3,7 +3,7 @@ package ChainingTable;
 import SinglyLinkedList.Node;
 import SinglyLinkedList.WhoIsPrecede;
 
-public class SinlgyLinkedList<T> implements SinglyLinkedListInterface<T> {
+public class SinglyLinkedList<T> implements SinglyLinkedListInterface<T> {
     private Node<T> head;
     private Node<T> cur;
     private Node<T> before;
@@ -36,7 +36,7 @@ public class SinlgyLinkedList<T> implements SinglyLinkedListInterface<T> {
         this.numOfData++;
     }
 
-    public SinlgyLinkedList() {
+    public SinglyLinkedList() {
         head = new Node<T>();
         head.next = null;
         cur = null;
