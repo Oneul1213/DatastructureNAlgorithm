@@ -18,6 +18,16 @@ public class ALGraph {
     private int numV;
     private int numE;
     private SinglyLinkedList<Vertex>[] adjList;
+    private int[] visitInfo;
+
+    private boolean VisitVertex(Vertex visitV) {
+        if (this.visitInfo[visitV.getValue()] == 0) {               // 방문한적 없던 정점이면
+            this.visitInfo[visitV.getValue()] = 1;
+            System.out.print((char)(visitV.getValue() + 65)+" ");
+            return true;                                            // 방문 성공
+        }
+        return false;                                               // 방문 실패
+    }
 
     public ALGraph(int nv) {
         this.numV = nv;
@@ -34,6 +44,7 @@ public class ALGraph {
             });
         }
 
+        this.visitInfo = new int[this.numV];
     }
 
     public void AddEdge(Vertex fromV, Vertex toV) {
@@ -57,5 +68,42 @@ public class ALGraph {
             }
             System.out.println();
         }
+    }
+
+    public void DFShowGraphVertex(Vertex startV) {
+        ArrayStack<Vertex> stack = new ArrayStack<Vertex>();
+        Vertex visitV = startV;
+        Vertex[] nextV = new Vertex[1];
+
+        this.VisitVertex(visitV);
+        stack.SPush(visitV);
+
+        while (this.adjList[visitV.getValue()].LFirst(nextV)) {
+            boolean visitFlag = false;
+
+            if (this.VisitVertex(nextV[0])) {
+                stack.SPush(visitV);
+                visitV = nextV[0];
+                visitFlag = true;
+            } else {
+                while (this.adjList[visitV.getValue()].LNext(nextV)) {
+                    if (this.VisitVertex(nextV[0])) {
+                        stack.SPush(visitV);
+                        visitV = nextV[0];
+                        visitFlag = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!visitFlag) {
+                if (stack.SIsEmpty())       // 처음 정점으로 돌아왔다면
+                    break;
+                else
+                    visitV = stack.SPop();  // 돌아갈 정점
+            }
+        }
+
+        this.visitInfo = new int[this.numV];
     }
 }
