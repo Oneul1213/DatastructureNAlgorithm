@@ -123,10 +123,10 @@ public class ALGraph {
                     queue.Enqueue(nextV[0]);
             }
 
-            if (queue.QIsEmpty())
+            if (queue.QIsEmpty())           // 모든 정점을 다 방문했다면
                 break;
             else
-                visitV = queue.Dequeue();
+                visitV = queue.Dequeue();   // 연결된 다른 정점에서 다시 시작
         }
 
         this.visitInfo = new int[this.numV];

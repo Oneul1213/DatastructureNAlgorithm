@@ -81,10 +81,10 @@ class ALGraph:
                     data = self.adjList[visitV.value].LNext()
             
             if visitFlag is False:
-                if stack.SIsEmpty() is True:
+                if stack.SIsEmpty() is True:    # 처음 정점으로 돌아왔다면
                     break
                 else:
-                    visitV = stack.SPop()
+                    visitV = stack.SPop()       # 돌아갈 정점
             
             data = self.adjList[visitV.value].LFirst()
 
@@ -107,10 +107,10 @@ class ALGraph:
                     queue.Enqueue(data[1])
                 data = self.adjList[visitV.value].LNext()
             
-            if queue.QIsEmpty() is True:
+            if queue.QIsEmpty() is True:    # 모든 정점을 다 방문했다면
                 break
             else:
-                visitV = queue.Dequeue()
+                visitV = queue.Dequeue()    # 연결된 다른 정점에서 다시 시작
             
             data = self.adjList[visitV.value].LFirst()
 
