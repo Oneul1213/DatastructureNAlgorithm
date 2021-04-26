@@ -4,6 +4,7 @@
 #include "ALGraph.h"
 #include "SinglyLinkedList.h"
 #include "ArrayBaseStack.h"
+#include "CircularQueue.h"
 
 int WhoIsPrecede(int data1, int data2);
 
@@ -121,6 +122,36 @@ void DFShowGraphVertex(ALGraph* pg, int startV)
 			else
 				visitV = SPop(&stack);			// 돌아갈 정점
 		}
+	}
+
+	memset(pg->visitInfo, 0, sizeof(int) * pg->numV);
+}
+
+void BFShowGraphVertex(ALGraph* pg, int startV)
+{
+	Queue queue;
+	int visitV = startV;
+	int nextV;
+
+	QueueInit(&queue);
+
+	VisitVertex(pg, visitV);
+
+	while (LFirst(&(pg->adjList[visitV]), &nextV) == TRUE)
+	{
+		if (VisitVertex(pg, nextV) == TRUE)
+			Enqueue(&queue, nextV);
+
+		while (LNext(&(pg->adjList[visitV]), &nextV) == TRUE)
+		{
+			if (VisitVertex(pg, nextV) == TRUE)
+				Enqueue(&queue, nextV);
+		}
+
+		if (QIsEmpty(&queue) == TRUE)	// 모든 정점을 다 방문했다면
+			break;
+		else
+			visitV = Dequeue(&queue);	// 연결된 다른 정점에서 다시 시작
 	}
 
 	memset(pg->visitInfo, 0, sizeof(int) * pg->numV);

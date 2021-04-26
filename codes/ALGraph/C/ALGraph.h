@@ -23,4 +23,6 @@ void ShowGraphEdgeInfo(ALGraph* pg);
 
 void DFShowGraphVertex(ALGraph* pg, int startV);
 
+void BFShowGraphVertex(ALGraph* pg, int startV);
+
 #endif

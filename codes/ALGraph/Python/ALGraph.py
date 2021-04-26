@@ -1,6 +1,7 @@
 from enum import Enum
 import SinglyLinkedListModule as slm
 import ArrayBaseStackModule as asm
+import CircularQueueModule as cqm
 
 
 class Vertex(Enum):
@@ -84,6 +85,32 @@ class ALGraph:
                     break
                 else:
                     visitV = stack.SPop()
+            
+            data = self.adjList[visitV.value].LFirst()
+
+        self.visitInfo = [0] * self.numV
+    
+    def BFShowGraphVertex(self, startV):
+        queue = cqm.CircularQueue()
+        visitV = startV
+
+        self.VisitVertex(visitV)
+
+        data = self.adjList[visitV.value].LFirst()
+        while data[0] is True:
+            if self.VisitVertex(data[1]) is True:
+                queue.Enqueue(data[1])
+            
+            data = self.adjList[visitV.value].LNext()
+            while data[0] is True:
+                if self.VisitVertex(data[1]) is True:
+                    queue.Enqueue(data[1])
+                data = self.adjList[visitV.value].LNext()
+            
+            if queue.QIsEmpty() is True:
+                break
+            else:
+                visitV = queue.Dequeue()
             
             data = self.adjList[visitV.value].LFirst()
 

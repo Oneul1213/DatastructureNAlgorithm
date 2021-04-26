@@ -14,12 +14,21 @@ int main(void)
 	AddEdge(&graph, E, F);
 	AddEdge(&graph, E, G);
 
-	ShowGraphEdgeInfo(&graph);
+	ShowGraphEdgeInfo(&graph); printf("\n");
 
+	printf("DFS 결과\n");
 	DFShowGraphVertex(&graph, A); printf("\n");
 	DFShowGraphVertex(&graph, C); printf("\n");
 	DFShowGraphVertex(&graph, E); printf("\n");
 	DFShowGraphVertex(&graph, G); printf("\n");
+	printf("\n");
+
+	printf("BFS 결과\n");
+	BFShowGraphVertex(&graph, A); printf("\n");
+	BFShowGraphVertex(&graph, C); printf("\n");
+	BFShowGraphVertex(&graph, E); printf("\n");
+	BFShowGraphVertex(&graph, G); printf("\n");
+	printf("\n");
 
 	GraphDestroy(&graph);
 	return 0;

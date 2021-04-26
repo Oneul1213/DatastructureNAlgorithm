@@ -19,4 +19,5 @@ public:
 	void AddEdge(int fromV, int toV);
 	void ShowGraphEdgeInfo();
 	void DFShowGraphVertex(int startV);
+	void BFShowGraphVertex(int startV);
 };

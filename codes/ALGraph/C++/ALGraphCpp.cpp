@@ -6,6 +6,8 @@
 #include "SinglyLinkedListCpp.cpp"
 #include "ArrayBaseStackCpp.h"
 #include "ArrayBaseStackCpp.cpp"
+#include "CircularQueueCpp.h"
+#include "CircularQueueCpp.cpp"
 
 int WhoIsPrecede(int data1, int data2)
 {
@@ -116,6 +118,34 @@ void ALGraph::DFShowGraphVertex(int startV)
 			else
 				visitV = stack.SPop();			// 돌아갈 정점
 		}
+	}
+
+	memset(this->visitInfo, 0, sizeof(int) * this->numV);
+}
+
+void ALGraph::BFShowGraphVertex(int startV)
+{
+	CircularQueue<int> queue;
+	int visitV = startV;
+	int nextV;
+
+	this->VisitVertex(visitV);
+
+	while (this->adjList[visitV]->LFirst(nextV) == true)
+	{
+		if (this->VisitVertex(nextV) == true)
+			queue.Enqueue(nextV);
+
+		while (this->adjList[visitV]->LNext(nextV) == true)
+		{
+			if (this->VisitVertex(nextV) == true)
+				queue.Enqueue(nextV);
+		}
+
+		if (queue.QIsEmpty() == true)	// 모든 정점을 다 방문했다면
+			break;
+		else
+			visitV = queue.Dequeue();	// 연결된 다른 정점에서 다시 시작
 	}
 
 	memset(this->visitInfo, 0, sizeof(int) * this->numV);

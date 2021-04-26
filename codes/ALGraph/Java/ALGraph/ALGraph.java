@@ -106,4 +106,29 @@ public class ALGraph {
 
         this.visitInfo = new int[this.numV];
     }
+
+    public void BFShowGraphVertex(Vertex startV) {
+        CircularQueue<Vertex> queue = new CircularQueue<Vertex>();
+        Vertex visitV = startV;
+        Vertex[] nextV = new Vertex[1];
+
+        this.VisitVertex(visitV);
+
+        while (this.adjList[visitV.getValue()].LFirst(nextV)) {
+            if (this.VisitVertex(nextV[0]))
+                queue.Enqueue(nextV[0]);
+
+            while (this.adjList[visitV.getValue()].LNext(nextV)) {
+                if (this.VisitVertex(nextV[0]))
+                    queue.Enqueue(nextV[0]);
+            }
+
+            if (queue.QIsEmpty())
+                break;
+            else
+                visitV = queue.Dequeue();
+        }
+
+        this.visitInfo = new int[this.numV];
+    }
 }
